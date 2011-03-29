@@ -8,3 +8,7 @@ class PollAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Poll, PollAdmin)
+
+from polls.models import Choice
+
+admin.site.register(Choice)
