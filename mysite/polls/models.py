@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 class Poll(models.Model):
@@ -6,6 +7,9 @@ class Poll(models.Model):
 
     def __unicode__(self):
         return self.question
+
+    def was_published_today(self):
+        return self.pub_date.date() == datetime.date.today()
 
 class Choice(models.Model):
     poll = models.ForeignKey(Poll)
