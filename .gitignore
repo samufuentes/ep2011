@@ -2,3 +2,4 @@
 *~
 *.orig
 *.sw?
+mysite/database.sqlite
