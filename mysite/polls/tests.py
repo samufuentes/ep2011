@@ -6,6 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from polls.models import Poll, Choice
 
 
 class SimpleTest(TestCase):
@@ -14,3 +15,14 @@ class SimpleTest(TestCase):
         Tests that 1 + 1 always equals 2.
         """
         self.assertEqual(1 + 1, 2)
+
+class PollsTest(TestCase):
+    fixtures = ["test_data.json"]
+
+    def test_get_poll(self):
+        self.assertEqual(Poll.objects.get(pk=1).question,
+                "Best football team?")
+
+    def test_count_choices(self):
+        self.assertEqual(Choice.objects.all().count(), 3)
+
